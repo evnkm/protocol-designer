@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+}
+
+@layer components {
+  .deck-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 0.5rem;
+  }
+
+  .protocol-step {
+    @apply p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:border-blue-500 cursor-pointer transition-all;
+  }
+
+  .labware-slot {
+    @apply border-2 border-dashed border-gray-300 rounded-lg p-2 hover:border-blue-500 transition-all;
+  }
+
+  .liquid-transfer-animation {
+    @apply absolute w-2 h-2 bg-blue-500 rounded-full;
+    animation: transfer 1s ease-in-out forwards;
+  }
+}
+
+@keyframes transfer {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
