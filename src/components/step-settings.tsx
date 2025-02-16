@@ -1,26 +1,36 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface StepSettingsProps {
-  stepType: string
+  stepType: string;
 }
 
 export default function StepSettings({ stepType }: StepSettingsProps) {
-  if (stepType !== "Transfer") return null
+  if (stepType !== "Transfer") return null;
 
   return (
     <div className="p-4 space-y-6">
       <div className="space-y-4">
         <div>
           <Label>Pipette</Label>
-          <div className="bg-secondary/20 p-2 rounded-md mt-1">P300 8-Channel GEN2</div>
+          <div className="bg-secondary p-2 rounded-md mt-1">
+            P300 8-Channel GEN2
+          </div>
         </div>
 
         <div>
           <Label>Tiprack</Label>
-          <div className="bg-secondary/20 p-2 rounded-md mt-1">Opentrons OT-2 96 Tip Rack 300 µL</div>
+          <div className="bg-secondary p-2 rounded-md mt-1">
+            Opentrons OT-2 96 Tip Rack 300 µL
+          </div>
         </div>
 
         <div>
@@ -76,6 +86,5 @@ export default function StepSettings({ stepType }: StepSettingsProps) {
 
       <Button className="w-full">Continue</Button>
     </div>
-  )
+  );
 }
-
