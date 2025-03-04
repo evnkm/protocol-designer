@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,7 +17,7 @@ interface StepSettingsProps {
 }
 
 export default function StepSettings({ stepType }: StepSettingsProps) {
-  if (stepType !== "Transfer") return null;
+  if (stepType !== "transfer") return null;
 
   return (
     <div className="p-4 space-y-6">

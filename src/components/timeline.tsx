@@ -2,17 +2,18 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { stepToIcon } from "./add-step-menu";
 import React from "react";
+import { ProtocolStep } from "@/types/protocol";
 
 interface TimelineProps {
-  steps: string[];
-  selectedStep: string | null;
-  onStepSelect: (step: string) => void;
+  steps: ProtocolStep[];
+  selectedStepIndex: number | null;
+  onStepSelect: (index: number) => void;
   onAddStepClick: () => void;
 }
 
 export default function Timeline({
   steps,
-  selectedStep,
+  selectedStepIndex,
   onStepSelect,
   onAddStepClick,
 }: TimelineProps) {
@@ -29,7 +30,7 @@ export default function Timeline({
           <Button
             variant="secondary"
             className="w-full justify-start"
-            onClick={() => onStepSelect("Starting deck")}
+            onClick={() => onStepSelect(-1)}
           >
             <ArrowRight className="mr-2 h-4 w-4" />
             Starting deck
@@ -37,16 +38,16 @@ export default function Timeline({
 
           {steps.map((step, index) => (
             <Button
-              key={index}
-              variant={selectedStep === step ? "default" : "secondary"}
+              key={step.id}
+              variant={selectedStepIndex === index ? "default" : "secondary"}
               className="w-full justify-start"
-              onClick={() => onStepSelect(step)}
+              onClick={() => onStepSelect(index)}
             >
-              {stepToIcon[step] &&
-                React.createElement(stepToIcon[step], {
+              {stepToIcon[step.type] &&
+                React.createElement(stepToIcon[step.type], {
                   className: "mr-2 h-4 w-4",
                 })}
-              {index + 1}. {step}
+              {index + 1}. {step.description}
             </Button>
           ))}
 
